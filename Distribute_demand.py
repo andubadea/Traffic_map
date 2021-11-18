@@ -10,15 +10,6 @@ import math
 #proportion of traffic from Dcenters (30, 50, 80)
 #number of loitering missions and radius 
 
-
-##Fixed variables:
-timesteps = 360                         #amount of time in which flights are distributed
-Percentage_Dcenters = 0.80              #proportion of vertiport demand that will come from distribution centers
-Percentage_closest_Dcenters = 0.80      #proportion of vertiport demand that will come from the closest distribution centers
-Number_of_Dcenters_per_vertiport = 5    #amount of distribution centers that are considered closest
-Percentage_known_flights = 0.70         #percentage of all flights that are revealed at 00:00:00
-Percentage_emergency_flights = 0.03     #percentage of the flights, that are not revealed at the start, that are revealed 1 minute in advance instead of 10 minutes
-
 """
 ##Method pseudo code:
     

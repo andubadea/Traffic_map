@@ -9,7 +9,6 @@ from math import sqrt
 Vertiports:
 
 """
-traffic_level = "very_low"
 
 def Create_vertiport_layer(traffic_level):
     #number of vertiports per municipality

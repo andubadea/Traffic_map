@@ -6,7 +6,7 @@ from Loitering_missions import Loitering_missions
 from multiprocessing import Pool as ThreadPool
 
 
-list_of_demands = ['low', 'medium', 'high', 'ultra']
+list_of_demands = ['very_low','low', 'medium', 'high', 'ultra']
 list_of_Dcenter_proportions = [0.40, 0.50, 0.60, 0.70, 0.80]
 list_of_loitering_missions_number = [5, 6, 7, 8, 9]                     #set them accordingly for the demandlevels in this order: ['very_low', 'low', 'medium', 'high', 'ultra']
 
@@ -23,8 +23,9 @@ ac_types= ['MP20', 'MP30']
 #input loitering
 negative_time_margin = 120                  #seconds before departure from when the loiter missions start
 positive_time_margin = 600                  #seconds after departure until when the loiter missions last (since the arrival time is unknown)
-loiter_area_side = 500                      #meter: square 500 by 500 meter
+loiter_area_side = 300                      #meter: square 500 by 500 meter
 #number_of_loitering_missions = 5           #(taken from list)
+asd = []
 
 input_arr = []
 for demandlevel in range(len(list_of_demands)):
@@ -50,15 +51,19 @@ def calculate_intention(variables):
                       Percentage_emergency_flights, ac_types,
                       Distribution_centers_df, Vertiports_df)
     
+    global asd
+    asd = flight_schedule_df
+    
     Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
                        positive_time_margin, loiter_area_side, number_of_loitering_missions, 
                        sample, flight_schedule_df, Distribution_centers_df)
     return
 
 def main():
-    pool = ThreadPool(12)
-    results = pool.map(calculate_intention, input_arr)
-    pool.close()
+    calculate_intention(input_arr[0])
+    # pool = ThreadPool(12)
+    # results = pool.map(calculate_intention, input_arr)
+    # pool.close()
 
 if __name__ == '__main__':
     main()
