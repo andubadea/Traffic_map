@@ -51,9 +51,6 @@ def calculate_intention(variables):
                       Percentage_emergency_flights, ac_types,
                       Distribution_centers_df, Vertiports_df)
     
-    global asd
-    asd = flight_schedule_df
-    
     Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
                        positive_time_margin, loiter_area_side, number_of_loitering_missions, 
                        sample, flight_schedule_df, Distribution_centers_df)
@@ -61,7 +58,7 @@ def calculate_intention(variables):
 
 def main():
     calculate_intention(input_arr[0])
-    # pool = ThreadPool(12)
+    # pool = ThreadPool(32)
     # results = pool.map(calculate_intention, input_arr)
     # pool.close()
 

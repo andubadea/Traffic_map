@@ -2,8 +2,7 @@ import pandas as pd
 import geopandas as gpd
 from scipy import spatial
 import geopandas
-from shapely.geometry import Polygon, Point
-from shapely.ops import cascaded_union
+from shapely.geometry import Point
 
 
 def Node_coupling(Distribution_centers_df, Vertiports_df):

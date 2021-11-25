@@ -1,7 +1,7 @@
 import pandas as pd
 import geopandas
 from shapely.geometry import Polygon, Point
-from shapely.ops import cascaded_union
+from shapely.ops import unary_union
 import numpy as np
 from math import sqrt
 
@@ -80,7 +80,7 @@ def Create_vertiport_layer(traffic_level):
         #print(geofence_polygon.area)
         geofence_polygon_list.append(geofence_polygon)
     #print(geofence_polygon_list)
-    geofence_polygon_list = cascaded_union(geofence_polygon_list)
+    geofence_polygon_list = unary_union(geofence_polygon_list)
     
         
     def Create_polygon(municipality):

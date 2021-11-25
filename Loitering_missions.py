@@ -177,7 +177,9 @@ def Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin,
                 x_min = x_rec - ((loiter_area_side/2)/111111)
                 x_max = x_rec + ((loiter_area_side/2)/111111)
                 y_min = y_rec - ((loiter_area_side/2)/111111)
-                y_max = y_rec + ((loiter_area_side/2)/111111)  
+                y_max = y_rec + ((loiter_area_side/2)/111111)
+                if not(x_min<x_rec<x_max and y_min<y_rec<y_max):
+                    print('Ask Viranca nicely to fix bug.')
                 start_time = row[3]
                 #flightintention_df.iat[index, 7] = start_time
                 flightintention_df.iat[index, 7] = positive_time_margin + np.random.randint(-120,120)
@@ -201,7 +203,10 @@ def Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin,
         x_min = x_rec - ((loiter_area_side/2)/111111)
         x_max = x_rec + ((loiter_area_side/2)/111111)
         y_min = y_rec - ((loiter_area_side/2)/111111)
-        y_max = y_rec + ((loiter_area_side/2)/111111)  
+        y_max = y_rec + ((loiter_area_side/2)/111111)
+        if not(x_min<x_rec<x_max and y_min<y_rec<y_max):
+            print('Ask Viranca nicely to fix bug.')
+            
         start_time = flight[2] - negative_time_margin
         end_time = flight[2] + positive_time_margin
         loiter_mission.append(start_time)
@@ -272,8 +277,9 @@ def Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin,
             seconds_left = "0" + str(seconds_left)   
         flight_timestamp = "00:" + str(whole_minutes) + ":"  + str(seconds_left)    
         flightintention_df.iat[index, 3] = flight_timestamp    
-        
-    flightintention_df[1] = [f'D{x}' for x in range(len(flightintention_df[1]))]    
+    
+    flightintention_df = flightintention_df.sort_values(by=3)
+    flightintention_df[1] = [f'D{x+1}' for x in range(len(flightintention_df[1]))]    
     filename = 'Final_flight_intentions/' + 'Flight_intention_' + traffic_level + '_' + str(Percentage_Dcenters*100) + '_' + str(number_of_loitering_missions) + '_' + str(sample) + '.csv'
     flightintention_df.to_csv(filename, header = False, index = False)
     print(f'File saved: {filename}')
