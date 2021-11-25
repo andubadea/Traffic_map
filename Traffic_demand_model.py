@@ -3,6 +3,7 @@ from Create_vertiport_layer import Create_vertiport_layer
 from Node_coupling import Node_coupling
 from Distribute_demand import Distribute_demand
 from Loitering_missions import Loitering_missions
+from Fix_Intention import fix_times
 from multiprocessing import Pool as ThreadPool
 
 
@@ -51,9 +52,17 @@ def calculate_intention(variables):
                       Percentage_emergency_flights, ac_types,
                       Distribution_centers_df, Vertiports_df)
     
-    Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
+    semi_final_flight_schedule_df = Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
                        positive_time_margin, loiter_area_side, number_of_loitering_missions, 
                        sample, flight_schedule_df, Distribution_centers_df)
+    
+    final_df = fix_times(semi_final_flight_schedule_df)
+    global asd
+    asd = final_df
+    
+    filename = 'Final_flight_intentions/' + 'Flight_intention_' + traffic_level + '_' + str(int(Percentage_Dcenters*100)) + '_' + str(sample) + '.csv'
+    final_df.to_csv(filename, header = False, index = False)
+    print(f'File saved: {filename}')
     return
 
 def main():

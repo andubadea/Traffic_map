@@ -204,7 +204,7 @@ def Distribute_demand(timesteps, Percentage_Dcenters, Percentage_closest_Dcenter
                     if emergency:
                         revealtime = 60
                     else:
-                        revealtime = 600
+                        revealtime = 300
                     time_in_seconds = max(0, (flight[2] - revealtime))
                     whole_minutes = math.floor(time_in_seconds/60)   #make this round down
                     whole_minutes = str(whole_minutes)
