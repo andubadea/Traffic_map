@@ -45,7 +45,7 @@ def calculate_intention(variables):
     Vertiport_locations = Create_vertiport_layer(traffic_level)
     
     Distribution_centers_df, Vertiports_df = Node_coupling(Distribution_centers_locations, 
-                                                           Vertiport_locations)
+                                                            Vertiport_locations)
     
     flight_schedule_df = Distribute_demand(timesteps, Percentage_Dcenters, Percentage_closest_Dcenters, 
                       Number_of_Dcenters_per_vertiport, Percentage_known_flights, 
@@ -53,8 +53,8 @@ def calculate_intention(variables):
                       Distribution_centers_df, Vertiports_df)
     
     semi_final_flight_schedule_df = Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
-                       positive_time_margin, loiter_area_side, number_of_loitering_missions, 
-                       sample, flight_schedule_df, Distribution_centers_df)
+                        positive_time_margin, loiter_area_side, number_of_loitering_missions, 
+                        sample, flight_schedule_df, Distribution_centers_df)
     
     final_df = fix_times(semi_final_flight_schedule_df)
     global asd
@@ -87,7 +87,7 @@ if __name__ == '__main__':
 #             Vertiport_locations = Create_vertiport_layer(traffic_level)
             
 #             Distribution_centers_df, Vertiports_df = Node_coupling(Distribution_centers_locations, 
-#                                                                    Vertiport_locations)
+#                                                                     Vertiport_locations)
             
 #             flight_schedule_df = Distribute_demand(timesteps, Percentage_Dcenters, Percentage_closest_Dcenters, 
 #                               Number_of_Dcenters_per_vertiport, Percentage_known_flights, 
@@ -95,8 +95,8 @@ if __name__ == '__main__':
 #                               Distribution_centers_df, Vertiports_df)
             
 #             Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
-#                                positive_time_margin, loiter_area_side, number_of_loitering_missions, 
-#                                sample, flight_schedule_df, Distribution_centers_df)
+#                                 positive_time_margin, loiter_area_side, number_of_loitering_missions, 
+#                                 sample, flight_schedule_df, Distribution_centers_df)
 
 
 

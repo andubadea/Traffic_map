@@ -121,8 +121,7 @@ def Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin,
     for i in recieving_nodes_float:
         recieving_nodes_float_x.append(i[0])
         recieving_nodes_float_y.append(i[1])
-    
-    
+
     list_of_potential_loiter = []
     for destination in range(len(recieving_nodes_float_x)):
         #print(destination)
@@ -283,7 +282,7 @@ def Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin,
         flightintention_df.iat[index, 3] = flight_timestamp    
     
     flightintention_df = flightintention_df.sort_values(by=3)
-    flightintention_df[1] = [f'D{x+1}' for x in range(len(flightintention_df[1]))]    
+    flightintention_df[1] = [f'D{x+1}' for x in range(len(flightintention_df[1]))]
     return flightintention_df
 
 
