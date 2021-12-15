@@ -47,22 +47,22 @@ def calculate_intention(variables):
     Distribution_centers_df, Vertiports_df = Node_coupling(Distribution_centers_locations, 
                                                             Vertiport_locations)
     
-    flight_schedule_df = Distribute_demand(timesteps, Percentage_Dcenters, Percentage_closest_Dcenters, 
-                      Number_of_Dcenters_per_vertiport, Percentage_known_flights, 
-                      Percentage_emergency_flights, ac_types,
-                      Distribution_centers_df, Vertiports_df)
+    # flight_schedule_df = Distribute_demand(timesteps, Percentage_Dcenters, Percentage_closest_Dcenters, 
+    #                   Number_of_Dcenters_per_vertiport, Percentage_known_flights, 
+    #                   Percentage_emergency_flights, ac_types,
+    #                   Distribution_centers_df, Vertiports_df)
     
-    semi_final_flight_schedule_df = Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
-                        positive_time_margin, loiter_area_side, number_of_loitering_missions, 
-                        sample, flight_schedule_df, Distribution_centers_df)
+    # semi_final_flight_schedule_df = Loitering_missions(traffic_level, Percentage_Dcenters, negative_time_margin, 
+    #                     positive_time_margin, loiter_area_side, number_of_loitering_missions, 
+    #                     sample, flight_schedule_df, Distribution_centers_df)
     
-    final_df = fix_times(semi_final_flight_schedule_df)
-    global asd
-    asd = final_df
+    # final_df = fix_times(semi_final_flight_schedule_df)
+    # global asd
+    # asd = final_df
     
-    filename = 'Final_flight_intentions/' + 'Flight_intention_' + traffic_level + '_' + str(int(Percentage_Dcenters*100)) + '_' + str(sample) + '.csv'
-    final_df.to_csv(filename, header = False, index = False)
-    print(f'File saved: {filename}')
+    # filename = 'Final_flight_intentions/' + 'Flight_intention_' + traffic_level + '_' + str(int(Percentage_Dcenters*100)) + '_' + str(sample) + '.csv'
+    # final_df.to_csv(filename, header = False, index = False)
+    # print(f'File saved: {filename}')
     return
 
 def main():
